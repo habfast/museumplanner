@@ -1,9 +1,16 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+
+import {useExhibitionAndWeather} from "@/stores/useExhibitionAndWeather.ts";
+import {onMounted} from "vue";
+
+const store = useExhibitionAndWeather()
+
+onMounted(store.actions.fetchData)
+
 </script>
 
-<template>
-  <main>
-    <TheWelcome />
-  </main>
+<template lang="pug">
+  main
+    div Hello world
+    div {{ store.state.data }}
 </template>
