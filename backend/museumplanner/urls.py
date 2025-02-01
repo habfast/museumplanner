@@ -17,7 +17,15 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from django.urls.conf import include
+from rest_framework import routers
+
+from museumplanner import views
+
+router = routers.DefaultRouter()
+router.register('exhibitions', views.ExhibitionViewSet, basename='exhibitions')
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("api/", include(router.urls)),
 ]

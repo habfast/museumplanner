@@ -6,7 +6,7 @@ import environ
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env()
-ENV_FILE_PATH = os.path.join(os.path.dirname(BASE_DIR), ".env")
+ENV_FILE_PATH = os.path.join(BASE_DIR, ".env")
 if os.path.isfile(ENV_FILE_PATH):  # pragma: no cover
     env.read_env(ENV_FILE_PATH)
 
@@ -95,4 +95,7 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-DEFAULT_AUTO_FIELD = "django.db.models.UUIDField"
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+HARVARD_ARTS_MUSEUM_API_KEY = env.str("HARVARD_ARTS_MUSEUM_API_KEY")
