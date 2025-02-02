@@ -13,7 +13,7 @@ onMounted(store.actions.fetchData)
 </script>
 
 <template lang="pug">
-  v-row.px-12.pt-12
+  v-row.pa-12
     v-col(cols="12")
       div.text-h3 Welcome to Art Museum Planner
       v-card.mt-3(variant="tonal" elevation="0" color="primary" )
@@ -36,8 +36,21 @@ onMounted(store.actions.fetchData)
             | Open directions in Google Maps
 
     v-col(cols="12")
-      div.text-h3 Exhibitions
+      div.d-flex
+        span.text-h3 Exhibitions
+        v-text-field.ml-3(
+          label="Search"
+          variant="underlined"
+          v-model="store.state.searchText"
+        )
 
     v-col(cols="6" v-if="store.state.data" v-for="exhibition of store.state.data.records")
       exhibition-description(:exhibition="exhibition")
+    v-col.text-center(cols="12")
+      v-btn(
+        v-if="store.state.data && store.state.data.info.next"
+        @click="store.state.page = store.state.page + 1"
+        color="primary"
+      ) Load more
+      span.text-h6(v-else) Nothing else to load
 </template>

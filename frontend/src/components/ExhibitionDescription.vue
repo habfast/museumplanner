@@ -7,7 +7,7 @@ const props = defineProps<{
 </script>
 
 <template lang="pug">
-v-card(variant="elevated" elevation="24")
+v-card(variant="elevated" elevation="24" :image="exhibition.primaryimageurl" min-height="200" )
   v-card-title
     a(:href="exhibition.url" target="_blank") {{ exhibition.title }}
   v-card-text
@@ -17,3 +17,12 @@ v-card(variant="elevated" elevation="24")
 
 
 </template>
+
+<style scoped>
+:deep(.v-card__image) {
+  filter: opacity(0.3) blur(10px);
+}
+.v-card-title {
+  text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 15px, #FFF 0px 0px 25px;
+}
+</style>

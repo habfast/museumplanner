@@ -1,3 +1,5 @@
+import {isObject} from "lodash";
+
 function getHost() {
   let baseHost = ''
   try {
@@ -16,8 +18,12 @@ export type TypedResponse<T> = Response & {
   data: T
 }
 
-export async function get<T>(url: string): Promise<TypedResponse<T>> {
-  const response = (await fetch(`${API_HOST}${url} `, {})) as TypedResponse<T>
+export async function get<T>(url: string, params?: Record<string, string> | URLSearchParams): Promise<TypedResponse<T>> {
+  url = `${API_HOST}${url}`
+  if (isObject(params)) {
+    url = `${url}?${new URLSearchParams(params).toString()}`
+  }
+  const response = (await fetch(url, {})) as TypedResponse<T>
   response.data = await response.json()
   return response
 }

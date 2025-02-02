@@ -51,7 +51,7 @@ class InfoSerializer(serializers.Serializer):
     totalrecords = serializers.IntegerField()
     pages = serializers.IntegerField()
     page = serializers.IntegerField()
-    next = serializers.URLField()
+    next = serializers.URLField(allow_null=True, default=None)
     responsetime = serializers.CharField()
 
 class ExhibitionListSerializer(serializers.Serializer):

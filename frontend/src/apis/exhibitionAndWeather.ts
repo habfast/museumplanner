@@ -3,4 +3,4 @@ import http from '@/utils/http'
 
 const BASE_URL = '/api/exhibitions/'
 
-export const getExhibitionAndWeather = () => http.get<ExhibitionList>(BASE_URL)
+export const getExhibitionAndWeather = (params?: Record<string, string>) => http.get<ExhibitionList>(BASE_URL, params)
