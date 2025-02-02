@@ -2,8 +2,9 @@ from rest_framework import serializers
 
 
 class WeatherSerializer(serializers.Serializer):
-    temperature = serializers.ListSerializer(child=serializers.DecimalField(max_digits=5, decimal_places=2), read_only=True)
-    rain = serializers.ListSerializer(child=serializers.DecimalField(max_digits=5, decimal_places=2), read_only=True)
+    temperature = serializers.ListSerializer(child=serializers.FloatField(), read_only=True)
+    rain = serializers.ListSerializer(child=serializers.FloatField(), read_only=True)
+    timestamps = serializers.ListSerializer(child=serializers.IntegerField(), read_only=True)
 
 
 class ImageSerializer(serializers.Serializer):

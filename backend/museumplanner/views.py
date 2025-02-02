@@ -3,7 +3,6 @@ from rest_framework.response import Response
 
 from museumplanner.harvardartsmuseum_api import harvardartsmuseum_api
 from museumplanner.openmeteo import harvard_weather_data
-from museumplanner.pagination import HarvardArtsMuseumApiPagination
 from museumplanner.serializers import ExhibitionListSerializer
 
 

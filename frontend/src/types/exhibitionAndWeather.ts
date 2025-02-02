@@ -1,6 +1,7 @@
 export type Weather = {
   temperature: number[]
   rain: number[]
+  timestamps: number[]
 }
 
 export type Image = {
