@@ -1,0 +1,16 @@
+# Pull official node image
+FROM node:20.12.2-bullseye
+
+# Set custom workdir for isolation
+WORKDIR /app
+
+# Update npm
+RUN npm install -g pnpm
+
+# Install dependencies
+COPY ./package.json ./
+COPY ./pnpm-lock.yaml ./
+RUN pnpm install
+
+# Copy code into image (do that as late as possible in the Dockerfile)
+COPY . .

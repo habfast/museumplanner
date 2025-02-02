@@ -1,0 +1,35 @@
+services:
+  pm-backend:
+    build:
+      context: backend
+      dockerfile: backend.Dockerfile.test
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+    restart: always
+    volumes:
+      - ./backend:/root/
+    env_file:
+      - backend/.env
+    ports:
+      - 8000:8000
+
+  frontend:
+    build:
+      context: frontend
+      dockerfile: frontend.Dockerfile.test
+    command:
+      - pnpm
+      - dev
+      - --host
+    restart: always
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules # to prevent the host machine's node_modules from overwriting the container's
+    ports:
+      - "5173:5173"
+    env_file:
+      - frontend/.env
+
+networks:
+  default:
+    external:
+      name: museumplanner
