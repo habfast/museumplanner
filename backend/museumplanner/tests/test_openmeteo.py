@@ -31,11 +31,11 @@ class TestMeteo(unittest.TestCase):
         mock_client.weather_api.return_value = [mock_response]
         mock_openmeteo_client.return_value = mock_client
 
-        response = harvard_museum_meteo()
+        response = harvard_museum_meteo(["temp", "rain"])
 
         mock_openmeteo_client.assert_called_once()
         mock_client.weather_api.assert_called_once_with(
             "https://api.open-meteo.com/v1/forecast",
-            params={"latitude": 42.373611, "longitude": -71.110558, "hourly": ["temperature_2m", "rain"]},
+            params={"latitude": 42.373611, "longitude": -71.110558, "hourly": ["temp", "rain"], 'forecast_days': 3},
         )
         self.assertEqual(response, mock_response)

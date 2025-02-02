@@ -10,7 +10,6 @@ class ExhibitionViewSet(viewsets.GenericViewSet):
     serializer_class = ExhibitionListSerializer
 
     def list(self, request):
-        # Your logic to fetch data from the external API
         query_params = request.query_params.dict()
         api_data = harvardartsmuseum_api(query_params).json()
         api_data["weather"] = harvard_weather_data()
