@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import type {Weather} from "@/types/exhibitionAndWeather.ts";
-import {zip} from "lodash";
 import {ref} from "vue";
 
 
@@ -44,14 +43,12 @@ const series = ([
     type: "bar",
   },
 ])
-/*
-*/
 </script>
 
 <template lang="pug">
-div
-  apexchart(
+apexchart(
   width="100%"
+  height="300"
   :options="chartOptions"
   :series="series"
 )
