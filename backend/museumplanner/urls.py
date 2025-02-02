@@ -23,7 +23,7 @@ from rest_framework import routers
 from museumplanner import views
 
 router = routers.DefaultRouter()
-router.register('exhibitions', views.ExhibitionViewSet, basename='exhibitions')
+router.register("exhibitions", views.ExhibitionViewSet, basename="exhibitions")
 
 urlpatterns = [
     path("admin/", admin.site.urls),

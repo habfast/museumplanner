@@ -9,11 +9,11 @@ from museumplanner.constants import HARVARD_ARTS_MUSEUM_API_ENDPOINT
 
 class TestHarvardArtsMuseumAPI(TestCase):
 
-    @patch('museumplanner.harvardartsmuseum_api.requests.get')
-    @patch('museumplanner.harvardartsmuseum_api.settings')
+    @patch("museumplanner.harvardartsmuseum_api.requests.get")
+    @patch("museumplanner.harvardartsmuseum_api.settings")
     def test_harvardartsmuseum_api(self, mock_settings, mock_get):
         # Mock the settings to return a fake API key
-        mock_settings.HARVARD_ARTS_MUSEUM_API_KEY = 'fake_api_key'
+        mock_settings.HARVARD_ARTS_MUSEUM_API_KEY = "fake_api_key"
 
         # Mock the response from requests.get
         mock_response = MagicMock()
@@ -21,7 +21,7 @@ class TestHarvardArtsMuseumAPI(TestCase):
         mock_get.return_value = mock_response
 
         # Define the query parameters
-        query_params = {'param1': 'value1', 'param2': 'value2'}
+        query_params = {"param1": "value1", "param2": "value2"}
 
         # Call the function
         response = harvardartsmuseum_api(query_params)

@@ -1,15 +1,13 @@
 <script setup lang="ts">
-
-import ExhibitionDescription from "@/components/ExhibitionDescription.vue";
-import HelpText from "@/components/HelpText.vue";
-import WeatherChart from "@/components/WeatherChart.vue";
-import {useExhibitionAndWeather} from "@/stores/useExhibitionAndWeather.ts";
-import {onMounted} from "vue";
+import ExhibitionDescription from '@/components/ExhibitionDescription.vue'
+import HelpText from '@/components/HelpText.vue'
+import WeatherChart from '@/components/WeatherChart.vue'
+import { useExhibitionAndWeather } from '@/stores/useExhibitionAndWeather.ts'
+import { onMounted } from 'vue'
 
 const store = useExhibitionAndWeather()
 
 onMounted(store.actions.fetchData)
-
 </script>
 
 <template lang="pug">

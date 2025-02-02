@@ -36,6 +36,6 @@ class TestMeteo(unittest.TestCase):
         mock_openmeteo_client.assert_called_once()
         mock_client.weather_api.assert_called_once_with(
             "https://api.open-meteo.com/v1/forecast",
-            params={"latitude": 42.373611, "longitude": -71.110558, "hourly": ["temp", "rain"], 'forecast_days': 3},
+            params={"latitude": 42.373611, "longitude": -71.110558, "hourly": ["temp", "rain"], "forecast_days": 3},
         )
         self.assertEqual(response, mock_response)

@@ -24,9 +24,11 @@ class ImageSerializer(serializers.Serializer):
     iiifbaseuri = serializers.URLField()
     height = serializers.IntegerField()
 
+
 class PosterSerializer(serializers.Serializer):
     imageurl = serializers.URLField()
     caption = serializers.CharField(allow_null=True, required=False)
+
 
 class ExhibitionRecordSerializer(serializers.Serializer):
     shortdescription = serializers.CharField(allow_null=True, required=False)
@@ -46,6 +48,7 @@ class ExhibitionRecordSerializer(serializers.Serializer):
     lastupdate = serializers.DateTimeField()
     poster = PosterSerializer(default=None)
 
+
 class InfoSerializer(serializers.Serializer):
     totalrecordsperquery = serializers.IntegerField()
     totalrecords = serializers.IntegerField()
@@ -53,6 +56,7 @@ class InfoSerializer(serializers.Serializer):
     page = serializers.IntegerField()
     next = serializers.URLField(allow_null=True, default=None)
     responsetime = serializers.CharField()
+
 
 class ExhibitionListSerializer(serializers.Serializer):
     info = InfoSerializer()

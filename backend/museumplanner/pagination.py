@@ -4,22 +4,24 @@ from rest_framework.response import Response
 
 
 class HarvardArtsMuseumApiPagination(PageNumberPagination):
-    page_size_query_param = 'size'
-    page_query_param = 'page'
+    page_size_query_param = "size"
+    page_query_param = "page"
     max_page_size = 100
 
     def get_paginated_response(self, data):
-        return Response({
-            'info': {
-                'totalrecordsperquery': self.page.paginator.per_page,
-                'totalrecords': self.page.paginator.count,
-                'pages': self.page.paginator.num_pages,
-                'page': self.page.number,
-                'next': self.get_next_link(),
-                'responsetime': 'N/A'  # This would typically come from the API response
-            },
-            'records': data
-        })
+        return Response(
+            {
+                "info": {
+                    "totalrecordsperquery": self.page.paginator.per_page,
+                    "totalrecords": self.page.paginator.count,
+                    "pages": self.page.paginator.num_pages,
+                    "page": self.page.number,
+                    "next": self.get_next_link(),
+                    "responsetime": "N/A",  # This would typically come from the API response
+                },
+                "records": data,
+            }
+        )
 
     def get_next_link(self):
         if not self.page.has_next():
@@ -38,15 +40,13 @@ class HarvardArtsMuseumApiPagination(PageNumberPagination):
     def replace_query_param(self, url, key, val):
         query_params = self.request.query_params.copy()
         query_params[key] = val
-        return '{}?{}'.format(self.request.path, urlencode(query_params))
+        return "{}?{}".format(self.request.path, urlencode(query_params))
 
     def get_page_size(self, request):
         if self.page_size_query_param:
             try:
                 return _positive_int(
-                    request.query_params[self.page_size_query_param],
-                    strict=True,
-                    cutoff=self.max_page_size
+                    request.query_params[self.page_size_query_param], strict=True, cutoff=self.max_page_size
                 )
             except (KeyError, ValueError):
                 pass

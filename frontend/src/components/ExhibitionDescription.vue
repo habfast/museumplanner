@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type {ExhibitionRecord} from "@/types/exhibitionAndWeather.ts";
+import type { ExhibitionRecord } from '@/types/exhibitionAndWeather.ts'
 
 const props = defineProps<{
   exhibition: ExhibitionRecord
@@ -23,6 +23,9 @@ v-card(variant="elevated" elevation="24" :image="exhibition.primaryimageurl" min
   filter: opacity(0.3) blur(10px);
 }
 .v-card-title {
-  text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 15px, #FFF 0px 0px 25px;
+  text-shadow:
+    #fff 0px 0px 5px,
+    #fff 0px 0px 15px,
+    #fff 0px 0px 25px;
 }
 </style>
